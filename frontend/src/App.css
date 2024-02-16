@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #222;
+}
+
+.app {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  display: grid;
+  grid-gap: 20px;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 10px
+}
+
+.form__input {
+  background-color: #333;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form__btn {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+}
+
+.message {
+  text-align: center;
+  color: #777;
+}
+
+.todo__list {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.todo__item {
+  list-style: none;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  grid-gap: 10px;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.todo__check {
+  cursor: pointer;
+  background-color: #333;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  display: grid;
+}
+
+.todo__check::before {
+  font-size: 12px;
+  justify-self: center;
+  align-self: center;
+  opacity: 1;
+  transition: .1s;
+}
+
+.todo__check._active::before {
+  opacity: 0;
+}
+
+.todo__input {
+  background-color: #33333300;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 0;
+  outline: none;
+  transition: .15s;
+}
+
+.todo__input._edit {
+  background-color: #333;
+  padding: 5px;
+}
+
+.todo__btn {
+  opacity: 0;
+  transition: .1s;
+  cursor: pointer;
+  color: #999;
+}
+
+.todo__item:hover .todo__btn {
+  opacity: 1;
+}

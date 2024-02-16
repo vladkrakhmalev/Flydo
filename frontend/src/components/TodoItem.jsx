@@ -13,7 +13,8 @@ export function TodoItem({todo}) {
   }
 
   function editHandler() {
-    setEditing(true)
+    setEditing(!editing)
+    if (editing) saveHandler()
   }
 
   function nameHandler(e) {
@@ -23,7 +24,6 @@ export function TodoItem({todo}) {
   function saveHandler() {
     const newTodo = {id: todo.id, name}
     dispatch(updateTodo(newTodo))
-    setEditing(false)
   }
 
   function deleteHandler() {
@@ -31,24 +31,27 @@ export function TodoItem({todo}) {
   }
 
   return (
-    <li key={todo.id}>
-      {editing ? <>
-        <input
-          type='text'
-          value={name}
-          onChange={nameHandler}
-        />
-        <button onClick={saveHandler}>S</button>
-      </> : <>
-        <input
-          type="checkbox"
-          checked={todo.completed}
-          onChange={completeHandler}
-        />
-        <span>{todo.name}</span>
-        <button onClick={editHandler}>R</button>
-        <button onClick={deleteHandler}>D</button>
-      </>}
+    <li key={todo.id} className='todo__item'>
+      <i
+        onClick={completeHandler}
+        className={"fi fi-br-check todo__check" + (
+          todo.completed ? '' : ' _active'
+        )}
+      ></i>
+      <input
+        className={'todo__input' + (editing ? ' _edit' : '')}
+        value={name}
+        onChange={nameHandler}
+        readOnly={!editing}
+      />
+      <i
+        onClick={editHandler}
+        className={'todo__btn fi ' + (editing ? 'fi-rr-disk' : 'fi-rr-pencil')}
+        ></i>
+      <i
+        onClick={deleteHandler}
+        className='todo__btn fi fi-rr-trash'
+      ></i>
     </li>
   )
 }

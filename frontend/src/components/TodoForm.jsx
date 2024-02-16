@@ -17,10 +17,14 @@ export function TodoForm() {
     <form>
       <input
         type="text"
+        className="form__input"
         onChange={e => setName(e.target.value)}
         value={name}
         placeholder="Task name"/>
-      <button onClick={addHandler}>Add</button>
+      <button
+        onClick={addHandler}
+        className="form__btn"
+      >Add</button>
     </form>
   )
 }

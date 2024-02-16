@@ -4,12 +4,17 @@ const initialState = {
   items: [
     {
       id: 1,
-      name: '123',
-      completed: false
+      name: 'Design the application',
+      completed: true
     },
     {
       id: 2,
-      name: '1233',
+      name: 'Add D&D',
+      completed: true
+    },
+    {
+      id:3,
+      name: 'Upload changes to Git',
       completed: false
     }
   ]
@@ -35,11 +40,16 @@ const todoSlice = createSlice({
       const todo = state.items.find(todo => todo.id == id)
       if (todo) todo.name = name
     },
+    reorderTodos: (state, action) => {
+      const { startIndex, endIndex } = action.payload
+      const [removed] = state.items.splice(startIndex, 1)
+      state.items.splice(endIndex, 0, removed)
+    },
     deleteTodo(state, action) {
       state.items = state.items.filter(todo => todo.id !== action.payload)
     }
   }
 })
 
-export const {getTodo, addTodo, completeTodo, updateTodo, deleteTodo} = todoSlice.actions
+export const {getTodo, addTodo, completeTodo, updateTodo, reorderTodos, deleteTodo} = todoSlice.actions
 export default todoSlice.reducer
