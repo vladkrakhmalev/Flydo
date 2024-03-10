@@ -1,5 +1,5 @@
 # Simple Todo
-![Screenshot](screenshot/main.png)
+![Screenshot](screenshots/main.png)
 
 ### Description
 Simple todo web application. Currently only the frontend part is implemented. Backend addition is expected later.
